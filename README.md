@@ -14,7 +14,7 @@ When you are done with building the image, you can start it with the following c
 docker run -d --rm -it --hostname my-rabbit -p 15672:15672 -p 5672:5672 -p 15675:15675 my_rabbitmq
 ```
 
-Finally you can open the index.html in the root folder.
+Finally you can open the index.html in the root folder (I use chrome version 96.0.4664.55).
 
 Once the application is running you can observe a WS connection between the RabbitMQ server and the application. This connection will close at some time depending on a keepalive configuration of the mqtt client. For keepalive 60s it closes after 1~2 minutes, with keepalive 30s it closes after 10~12 minutes.
 
