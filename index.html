@@ -1,0 +1,32 @@
+<html>
+<head>
+  <title>test Ws mqtt.js</title>
+</head>
+<body>
+<script src="./browserMqtt.js"></script>
+<script>
+  var brokerUrl = "ws://localhost:15675/ws";
+  var options = {
+      "keepalive":30,
+      "password":"guest",
+      "username":"/:guest"
+  };
+  var client  = mqtt.connect(brokerUrl, options);
+
+  client.on('connect', function () {
+      console.log("Connected to broker");
+
+    client.subscribe('testTopic', function (err) {
+      if (!err) {
+        client.publish('testTopic', 'Hello');
+      }
+    });
+  });
+
+  client.on('message', function (topic, message) {
+    // message is Buffer
+    console.log(message.toString());
+  })
+</script>
+</body>
+</html>
